@@ -19,12 +19,12 @@ import { MarketData } from "../models/market.model";
 export class EventService {
   private websocketService = inject(WebSocketService);
 
-  private inplayEvents = new BehaviorSubject<number[]>([]);
-  private eventsMap = new BehaviorSubject<Map<number, TeamData>>(new Map());
+  private inplayEvents = new BehaviorSubject<EventId[]>([]);
+  private eventsMap = new BehaviorSubject<Map<EventId, TeamData>>(new Map());
   private marketsMap = new BehaviorSubject<Map<number, MarketData>>(new Map());
 
   // Track subscriptions to clean up when events are removed from inplay
-  private activeEventSubscriptions = new Set<number>();
+  private activeEventSubscriptions = new Set<EventId>();
   private activeMarketSubscriptions = new Set<number>();
 
   constructor() {
@@ -32,33 +32,33 @@ export class EventService {
     this.websocketService
       .subscribe("/topic/inplay")
       .pipe(
-        tap((eventIds: number[]) => {
+        tap((eventIds: EventId[]) => {
           const previousEvents = this.inplayEvents.value;
-          console.log("Received inplay events:", eventIds);
 
           // Handle new events - subscribe to events that weren't in the previous list
-          const newEvents = eventIds.filter(
-            (id) => !previousEvents.includes(id)
-          );
-          newEvents.forEach((eventId) => this.subscribeToEvent(eventId));
+          const newEvents = eventIds
+            .map((id) => id)
+            .filter((id) => !previousEvents.includes(id));
+
+          newEvents?.forEach((eventId) => this.subscribeToEvent(eventId));
 
           // Handle removed events - unsubscribe from events that are no longer in the list
-          const removedEvents = previousEvents.filter(
-            (id) => !eventIds.includes(id)
-          );
-          removedEvents.forEach((eventId) =>
-            this.unsubscribeFromEvent(eventId)
-          );
+          const removedEvents: EventId | undefined = previousEvents.shift();
+
+          if (removedEvents !== undefined) {
+            this.unsubscribeFromEvent(removedEvents);
+          }
 
           // Update the inplay events list
-          this.inplayEvents.next(eventIds);
+          console.log("newEvents events:", newEvents);
+          this.inplayEvents.next(newEvents);
         })
       )
       .subscribe();
   }
 
   private subscribeToEvent(eventId: any): void {
-    console.log("Subscribing to event:", eventId);
+    // console.log("Subscribing to event:", eventId);
     if (!this.activeEventSubscriptions.has(eventId)) {
       const destination = `/topic/event/${eventId.id}`;
       this.websocketService
@@ -76,7 +76,7 @@ export class EventService {
     }
   }
 
-  private unsubscribeFromEvent(eventId: number): void {
+  private unsubscribeFromEvent(eventId: EventId): void {
     if (this.activeEventSubscriptions.has(eventId)) {
       // Unsubscribe from the event
       this.websocketService.unsubscribe(`/topic/event/${eventId}`);
@@ -85,6 +85,7 @@ export class EventService {
       // Remove the event from the events map
       const currentEvents = this.eventsMap.value;
       const event = currentEvents.get(eventId);
+      // console.log("current  event:", currentEvents);
       currentEvents.delete(eventId);
       this.eventsMap.next(new Map(currentEvents));
 
@@ -95,7 +96,7 @@ export class EventService {
         );
       }
 
-      console.log(`Unsubscribed from event: ${eventId}`);
+      console.log(`Unsubscribed from event: ${eventId.id}`);
     }
   }
 

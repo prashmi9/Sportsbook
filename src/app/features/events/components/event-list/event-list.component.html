@@ -10,7 +10,9 @@
           [ngClass]="{ active: activeTab() === event.id }"
           (click)="setActiveTab(event.id)"
         >
-          <span class="tab-title">{{ event.id }}</span>
+          <span class="tab-title">{{
+            eventNames[mapIdToEvent[event.id]]
+          }}</span>
         </div>
       </div>
 

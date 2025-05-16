@@ -12,3 +12,16 @@ export interface TeamData {
   marketId: number;
   markets?: MarketData[];
 }
+
+export enum EventNames {
+  "football" = "Football",
+  "tennis" = "Tennis",
+  "basketball" = "Basketball",
+  "baseball" = "Baseball",
+  "icehockey" = "Ice Hockey",
+  "handball" = "Handball",
+  "volleyball" = "Volleyball",
+  "badminton" = "Badminton",
+  "beachvolleyball" = "Beach Volleyball",
+  "futsal" = "Futsal",
+}
