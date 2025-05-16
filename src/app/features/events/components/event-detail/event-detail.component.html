@@ -1,0 +1,40 @@
+<div class="event-detail-container">
+  <button class="back-button" (click)="navigateBack()">← Back to Events</button>
+
+  <ng-container *ngIf="eventId$ | async as team; else loading">
+    <div class="team-data">
+      <h2>Team Data</h2>
+      <p>Home Team: {{ team.homeTeam }} : {{ team.homeScore }}</p>
+      <p>Away Team: {{ team.awayTeam }} : {{ team.awayScore }}</p>
+      <p>Market Id: {{ team.marketId }}</p>
+      <!--<p>Team Score: {{ team.score }}</p> -->
+      <div class="markets-section">
+        <h2>Markets</h2>
+        <app-market-list [markets]="(marketData$ | async) || []">
+        </app-market-list>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="eventId$ | async as event; else loading">
+    <!-- <div *ngIf="event; else notFound" class="event-content"> -->
+    <!-- <div class="event-header">
+        {{ event.id }}
+        {{ event._value }}
+      </div> -->
+
+    <!-- </div> -->
+
+    <ng-template #notFound>
+      <app-error
+        title="Event Not Found"
+        message="The event you're looking for doesn't exist or is no longer live."
+        [retryFn]="navigateBack.bind(this)"
+      >
+      </app-error>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+</div>

@@ -1,0 +1,115 @@
+.market-container {
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 16px;
+  transition: background-color 0.3s;
+}
+
+.market-container.suspended {
+  background-color: #f1f1f1;
+  opacity: 0.8;
+}
+
+.market-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.market-header h3 {
+  font-size: 1.125rem;
+  margin: 0;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.market-status {
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.market-status.open {
+  background-color: #48bb78;
+  color: white;
+}
+
+.market-status.suspended {
+  background-color: #ed8936;
+  color: white;
+}
+
+.market-status.closed {
+  background-color: #718096;
+  color: white;
+}
+
+.outcomes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.outcome-card {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.outcome-card:hover:not(.suspended) {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  background-color: #f7fafc;
+}
+
+.outcome-card.suspended {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.outcome-name {
+  font-size: 0.875rem;
+  color: #4a5568;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.outcome-price {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #2b6cb0;
+  transition: color 0.3s;
+}
+
+.outcome-price.price-up {
+  color: #48bb78;
+  animation: fadeIn 0.5s;
+}
+
+.outcome-price.price-down {
+  color: #e53e3e;
+  animation: fadeIn 0.5s;
+}
+
+@media (max-width: 768px) {
+  .outcomes-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .outcomes-container {
+    grid-template-columns: 1fr;
+  }
+}

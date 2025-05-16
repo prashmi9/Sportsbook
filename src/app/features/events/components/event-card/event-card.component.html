@@ -1,0 +1,6 @@
+<div class="event-card" (click)="onSelect.emit(team.id)">
+  <h2 class="event-name">{{ team.id }}</h2>
+  <p>{{ team.awayTeam }} : {{ team.awayScore }}</p>
+  <p>{{ team.homeTeam }} : {{ team.homeScore }}</p>
+  <p>Market ID: {{ team.marketId }}</p>
+</div>

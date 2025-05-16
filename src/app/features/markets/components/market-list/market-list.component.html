@@ -1,0 +1,16 @@
+<div class="market-list">
+  <div class="market-container">
+    <div class="market-header">
+      <h3>Home: {{ markets.home }}</h3>
+      <h3>Draw: {{ markets.draw }}</h3>
+      <h3>Away: {{ markets.away }}</h3>
+    </div>
+  </div>
+
+  <ng-template #noMarkets>
+    <div class="no-markets">
+      <div class="no-markets-icon"></div>
+      <p>No markets available for this event.</p>
+    </div>
+  </ng-template>
+</div>

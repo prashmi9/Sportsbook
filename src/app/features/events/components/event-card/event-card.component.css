@@ -1,0 +1,71 @@
+.event-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  animation: fadeIn 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.status-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+}
+
+.status-badge.live {
+  background-color: #e53e3e;
+  animation: pulse 2s infinite;
+}
+
+.status-badge.upcoming {
+  background-color: #3182ce;
+}
+
+.status-badge.finished {
+  background-color: #718096;
+}
+
+.event-name {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: #2d3748;
+  margin-right: 60px; /* Space for badge */
+}
+
+.event-time {
+  font-size: 0.875rem;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+.event-description {
+  font-size: 0.875rem;
+  color: #4a5568;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.market-count {
+  font-size: 0.875rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.market-count span {
+  font-weight: bold;
+  color: #2d3748;
+}

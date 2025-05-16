@@ -1,0 +1,144 @@
+.event-list-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2d3748;
+  font-weight: 700;
+}
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.no-events {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.no-events-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.no-events h2 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: #2d3748;
+}
+
+.no-events p {
+  font-size: 1rem;
+  color: #718096;
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .event-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .event-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tabs  */
+.tabs-container {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  animation: slideUp 0.5s ease;
+}
+
+.tabs-header {
+  display: flex;
+  border-bottom: 1px solid var(--color-neutral-200);
+  background-color: #f2f2f7;
+}
+
+.tab-item {
+  flex: 1;
+  padding: var(--space-3);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border-bottom: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  color: var(--color-neutral-600);
+}
+
+.tab-item:hover {
+  background-color: var(--color-neutral-100);
+  color: var(--color-primary-500);
+}
+
+.tab-item.active {
+  color: var(--color-primary-500);
+  border-bottom: 2px solid var(--color-primary-500);
+  background-color: white;
+}
+.tab-item:hover .tab-icon,
+.tab-item.active .tab-icon {
+  transform: scale(1.1);
+}
+
+.tab-title {
+  font-weight: var(--font-weight-medium);
+}
+
+.tab-content {
+  position: relative;
+  min-height: 300px;
+}
+
+.tab-pane {
+  padding: 4px;
+  display: block;
+  opacity: 1;
+  animation: fadeIn 0.5s ease;
+  transition: opacity var(--transition-normal);
+}
+
+.tab-pane.active {
+  display: block;
+  opacity: 1;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

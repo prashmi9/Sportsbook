@@ -1,0 +1,30 @@
+.market-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.no-markets {
+  text-align: center;
+  padding: 30px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.no-markets-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.no-markets p {
+  font-size: 1rem;
+  color: #718096;
+}
+.market-container {
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 16px;
+  transition: background-color 0.3s;
+}

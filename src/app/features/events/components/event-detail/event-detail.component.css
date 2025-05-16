@@ -1,0 +1,93 @@
+.event-detail-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  background-color: #edf2f7;
+  border: none;
+  border-radius: 6px;
+  color: #4a5568;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #e2e8f0;
+}
+
+.event-content {
+  animation: fadeIn 0.3s ease;
+}
+
+.event-header {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.status-badge.live {
+  background-color: #e53e3e;
+  animation: pulse 2s infinite;
+}
+
+.status-badge.upcoming {
+  background-color: #3182ce;
+}
+
+.status-badge.finished {
+  background-color: #718096;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #2d3748;
+  font-weight: 700;
+}
+
+.event-time {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 10px;
+}
+
+.event-description {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.markets-section {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.markets-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #2d3748;
+  font-weight: 600;
+}

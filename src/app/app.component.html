@@ -1,0 +1,22 @@
+<div class="main-container">
+  <header>
+    <div class="header-content">
+      <div class="logo" routerLink="/">
+        <h1>SportsBook</h1>
+      </div>
+      <div class="connection-status" [class.connected]="isConnected">
+        {{ isConnected ? "Connected" : "Disconnected" }}
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 SportsBook - Live Data</p>
+    </div>
+  </footer>
+</div>

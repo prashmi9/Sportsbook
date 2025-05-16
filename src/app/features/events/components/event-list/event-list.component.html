@@ -1,0 +1,46 @@
+<div class="event-list-container">
+  <h1>Sports Book Events</h1>
+
+  <ng-container *ngIf="events$ | async as events; else loading">
+    <section class="tabs-container">
+      <div class="tabs-header">
+        <div
+          *ngFor="let event of events"
+          class="tab-item"
+          [ngClass]="{ active: activeTab() === event.id }"
+          (click)="setActiveTab(event.id)"
+        >
+          <span class="tab-title">{{ event.id }}</span>
+        </div>
+      </div>
+
+      <div class="tab-content">
+        <div class="tab-pane">
+          <div class="event-grid" *ngIf="events.length > 0; else noEvents">
+            <app-event-card
+              *ngFor="let team of teamData$ | async"
+              [team]="team"
+              (onSelect)="navigateToEvent($event)"
+            >
+            </app-event-card>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ng-template #noEvents>
+      <div class="no-events">
+        <div class="no-events-icon">📊</div>
+        <h2>No Live Events</h2>
+        <p>
+          There are no live events currently in progress. Please check back
+          later.
+        </p>
+      </div>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+</div>

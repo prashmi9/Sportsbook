@@ -1,0 +1,22 @@
+import { Component, inject, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterOutlet, RouterModule } from "@angular/router";
+import { WebSocketService } from "./core/services/websocket.service";
+
+@Component({
+  selector: "app-root",
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterModule],
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
+})
+export class AppComponent implements OnInit {
+  private websocketService = inject(WebSocketService);
+  isConnected = false;
+
+  ngOnInit(): void {
+    this.websocketService.isConnected().subscribe((connected) => {
+      this.isConnected = connected;
+    });
+  }
+}
