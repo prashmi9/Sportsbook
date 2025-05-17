@@ -7,17 +7,20 @@ import {
   distinctUntilChanged,
   map,
   share,
+  shareReplay,
   take,
   tap,
 } from "rxjs";
 import { EventId, TeamData } from "../models/event.model";
 import { MarketData } from "../models/market.model";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
 })
 export class EventService {
   private websocketService = inject(WebSocketService);
+  private router = inject(Router);
 
   private inplayEvents = new BehaviorSubject<EventId[]>([]);
   private eventsMap = new BehaviorSubject<Map<EventId, TeamData>>(new Map());
@@ -42,7 +45,7 @@ export class EventService {
 
           newEvents?.forEach((eventId) => this.subscribeToEvent(eventId));
 
-          // Handle removed events - unsubscribe from events that are no longer in the list
+          // Handle removed events - unsubscribe from events
           const removedEvents: EventId | undefined = previousEvents.shift();
 
           if (removedEvents !== undefined) {
@@ -58,7 +61,6 @@ export class EventService {
   }
 
   private subscribeToEvent(eventId: any): void {
-    // console.log("Subscribing to event:", eventId);
     if (!this.activeEventSubscriptions.has(eventId)) {
       const destination = `/topic/event/${eventId.id}`;
       this.websocketService
@@ -97,6 +99,8 @@ export class EventService {
       }
 
       console.log(`Unsubscribed from event: ${eventId.id}`);
+      //router to event details
+      this.router.navigate(["/"]);
     }
   }
 
@@ -158,7 +162,14 @@ export class EventService {
   }
   public eventDetails() {
     return this.eventsMap.pipe(
-      map((eventsMap) => Array.from(eventsMap.values()))
+      map((eventsMap) => {
+        console.log("eventsMap:", eventsMap);
+        return eventsMap.values();
+      }),
+      distinctUntilChanged(
+        (prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)
+      ),
+      shareReplay(1)
     );
   }
   public getEventById(eventId: number): Observable<TeamData | undefined> {

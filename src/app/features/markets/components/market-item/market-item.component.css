@@ -49,67 +49,8 @@
   color: white;
 }
 
-.outcomes-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 12px;
-}
-
-.outcome-card {
-  background-color: white;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  padding: 12px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.outcome-card:hover:not(.suspended) {
-  transform: translateY(-2px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-  background-color: #f7fafc;
-}
-
-.outcome-card.suspended {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.outcome-name {
-  font-size: 0.875rem;
-  color: #4a5568;
-  margin-bottom: 8px;
-  text-align: center;
-}
-
-.outcome-price {
-  font-size: 1.125rem;
-  font-weight: bold;
-  color: #2b6cb0;
-  transition: color 0.3s;
-}
-
-.outcome-price.price-up {
-  color: #48bb78;
-  animation: fadeIn 0.5s;
-}
-
-.outcome-price.price-down {
-  color: #e53e3e;
-  animation: fadeIn 0.5s;
-}
-
 @media (max-width: 768px) {
-  .outcomes-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 480px) {
-  .outcomes-container {
-    grid-template-columns: 1fr;
-  }
 }

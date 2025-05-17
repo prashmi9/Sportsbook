@@ -5,10 +5,10 @@
     <section class="tabs-container">
       <div class="tabs-header">
         <div
-          *ngFor="let event of events"
+          *ngFor="let event of events; let i = index"
           class="tab-item"
-          [ngClass]="{ active: activeTab() === event.id }"
-          (click)="setActiveTab(event.id)"
+          [ngClass]="{ active: activeTab() === i }"
+          (click)="setActiveTab(i, event.id)"
         >
           <span class="tab-title">{{
             eventNames[mapIdToEvent[event.id]]
@@ -18,7 +18,15 @@
 
       <div class="tab-content">
         <div class="tab-pane">
-          <div class="event-grid" *ngIf="events.length > 0; else noEvents">
+          <div class="event-container" *ngIf="events.length > 0; else noEvents">
+            <div class="header">
+              <div class="header-item"></div>
+              <div class="header-item"></div>
+              <div class="header-item">1</div>
+              <div class="header-item">X</div>
+              <div class="header-item">2</div>
+            </div>
+
             <app-event-card
               *ngFor="let team of teamData$ | async"
               [team]="team"

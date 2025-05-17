@@ -1,12 +1,36 @@
-<div class="market-list">
-  <div class="market-container">
-    <div class="market-header">
-      <h3>Home: {{ markets.home }}</h3>
-      <h3>Draw: {{ markets.draw }}</h3>
-      <h3>Away: {{ markets.away }}</h3>
+<!-- Navigation tabs -->
+<div class="tabs">
+  <div class="tab active">Main Markets</div>
+
+  <div class="tab-actions">
+    <button class="tab-action">Expand</button>
+    <button class="tab-action">Collapse</button>
+  </div>
+</div>
+<div class="betting-sections">
+  <!-- Match Result section -->
+  <div class="betting-section" *ngIf="markets; else noMarkets">
+    <div class="section-header">
+      <div class="arrow-icon">&#9660;</div>
+      <div class="section-title">Match Result</div>
+      <div class="cash-out">CASH OUT</div>
+    </div>
+
+    <div class="betting-option">
+      <div class="option-name">Home</div>
+      <div class="option-odds">{{ markets.home }}</div>
+    </div>
+
+    <div class="betting-option">
+      <div class="option-name">Draw</div>
+      <div class="option-odds">{{ markets.draw }}</div>
+    </div>
+
+    <div class="betting-option">
+      <div class="option-name">Away</div>
+      <div class="option-odds">{{ markets.away }}</div>
     </div>
   </div>
-
   <ng-template #noMarkets>
     <div class="no-markets">
       <div class="no-markets-icon"></div>

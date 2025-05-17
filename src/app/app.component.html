@@ -2,7 +2,7 @@
   <header>
     <div class="header-content">
       <div class="logo" routerLink="/">
-        <h1>SportsBook</h1>
+        <h1 routerLink="/">SportsBook</h1>
       </div>
       <div class="connection-status" [class.connected]="isConnected">
         {{ isConnected ? "Connected" : "Disconnected" }}

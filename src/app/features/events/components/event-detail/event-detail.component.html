@@ -2,28 +2,20 @@
   <button class="back-button" (click)="navigateBack()">← Back to Events</button>
 
   <ng-container *ngIf="eventId$ | async as team; else loading">
-    <div class="team-data">
-      <h2>Team Data</h2>
-      <p>Home Team: {{ team.homeTeam }} : {{ team.homeScore }}</p>
-      <p>Away Team: {{ team.awayTeam }} : {{ team.awayScore }}</p>
-      <p>Market Id: {{ team.marketId }}</p>
-      <!--<p>Team Score: {{ team.score }}</p> -->
+    <div class="team-data" *ngIf="team; else notFound">
+      <div class="match-header">
+        <div class="match-score">
+          <div class="team">{{ team.homeTeam }}</div>
+          <div class="score">{{ team.homeScore }}:{{ team.awayScore }}</div>
+          <div class="team">{{ team.awayTeam }}</div>
+        </div>
+      </div>
+
       <div class="markets-section">
-        <h2>Markets</h2>
         <app-market-list [markets]="(marketData$ | async) || []">
         </app-market-list>
       </div>
     </div>
-  </ng-container>
-  <ng-container *ngIf="eventId$ | async as event; else loading">
-    <!-- <div *ngIf="event; else notFound" class="event-content"> -->
-    <!-- <div class="event-header">
-        {{ event.id }}
-        {{ event._value }}
-      </div> -->
-
-    <!-- </div> -->
-
     <ng-template #notFound>
       <app-error
         title="Event Not Found"

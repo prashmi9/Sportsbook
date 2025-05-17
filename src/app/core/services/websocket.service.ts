@@ -55,7 +55,7 @@ export class WebSocketService {
         console.error("Broker reported error: " + frame.headers["message"]);
         console.error("Additional details: " + frame.body);
       },
-      reconnectDelay: 10000,
+      reconnectDelay: 5000,
     });
 
     this.client.activate();

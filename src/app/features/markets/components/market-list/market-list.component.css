@@ -3,22 +3,112 @@
   flex-direction: column;
 }
 
-.no-markets {
-  text-align: center;
-  padding: 30px;
-  background-color: #f8fafc;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+/* Navigation tabs */
+.tabs {
+  display: flex;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.no-markets-icon {
-  font-size: 2rem;
-  margin-bottom: 12px;
+.tab {
+  padding: 15px;
+  cursor: pointer;
+  position: relative;
 }
 
-.no-markets p {
-  font-size: 1rem;
-  color: #718096;
+.tab.active {
+  color: #4caf50;
+  border-bottom: 3px solid #4caf50;
+}
+
+.tab-count {
+  display: inline-block;
+  font-size: 12px;
+  color: #777;
+  margin-left: 5px;
+  vertical-align: super;
+}
+
+.tab-actions {
+  margin-left: auto;
+  display: flex;
+}
+
+.tab-action {
+  padding: 10px 15px;
+  margin: 5px;
+  background-color: #3a4a5d;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+/* Betting sections */
+.betting-sections {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+.betting-section {
+  flex: 1;
+  min-width: 300px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.section-header {
+  background-color: #1a2c42;
+  color: white;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+}
+
+.section-title {
+  flex: 1;
+}
+
+.cash-out {
+  background-color: #4caf50;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.arrow-icon {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  color: #1a2c42;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* Betting options */
+.betting-option {
+  display: flex;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: white;
+}
+
+.option-name {
+  flex: 1;
+}
+
+.option-odds {
+  width: 80px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 .market-container {
   background-color: #f8fafc;

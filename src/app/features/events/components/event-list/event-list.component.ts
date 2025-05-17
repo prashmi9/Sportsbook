@@ -1,20 +1,19 @@
-import {
-  AfterViewChecked,
-  Component,
-  inject,
-  OnChanges,
-  OnInit,
-  signal,
-} from "@angular/core";
-import { ChangeDetectionStrategy } from "@angular/core";
+import { Component, effect, inject, signal } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Router } from "@angular/router";
-import { map, Observable, of } from "rxjs";
+import {
+  distinctUntilChanged,
+  map,
+  Observable,
+  of,
+  shareReplay,
+  switchMap,
+} from "rxjs";
+import { toObservable } from "@angular/core/rxjs-interop";
 import { EventService } from "../../../../core/services/event.service";
 import { EventNames, TeamData } from "../../../../core/models/event.model";
 import { EventCardComponent } from "../event-card/event-card.component";
 import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
-import { ErrorComponent } from "../../../../shared/components/error/error.component";
 
 @Component({
   selector: "app-event-list",
@@ -27,17 +26,30 @@ import { ErrorComponent } from "../../../../shared/components/error/error.compon
   ],
   templateUrl: "./event-list.component.html",
   styleUrls: ["./event-list.component.css"],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventListComponent implements OnInit, OnChanges, AfterViewChecked {
+export class EventListComponent {
   private eventService = inject(EventService);
   private router = inject(Router);
   activeTab = signal(0);
   eventNames = EventNames;
-  events$: Observable<TeamData[]> = of([]);
-  teamData$: Observable<TeamData[]> = of([]);
 
-  mapIdToEvent: { [id: number]: keyof typeof EventNames } = {
+  readonly events$ = this.eventService.getInplayEvents();
+  readonly selectedEventId = signal<number | null>(null);
+
+  teamData$: Observable<TeamData[]> = toObservable(this.selectedEventId).pipe(
+    switchMap((eventId) => {
+      if (eventId === null) return of([]);
+      return this.eventService.eventDetails().pipe(
+        map((events) =>
+          Array.from(events).filter((event) => event.id === eventId)
+        ),
+        distinctUntilChanged((prev, curr) => prev[0]?.id === curr[0]?.id),
+        shareReplay(1)
+      );
+    })
+  );
+
+  readonly mapIdToEvent: { [id: number]: keyof typeof EventNames } = {
     1: "football",
     2: "tennis",
     3: "basketball",
@@ -49,30 +61,19 @@ export class EventListComponent implements OnInit, OnChanges, AfterViewChecked {
     9: "beachvolleyball",
     10: "futsal",
   };
-
-  ngOnInit(): void {
-    this.events$ = this.eventService.getInplayEvents();
-  }
-
-  ngOnChanges(): void {
-    this.setActiveTab(this.activeTab());
-  }
-  ngAfterViewChecked(): void {
-    this.events$.subscribe((events) => {
-      if (events.length > 0) {
-        this.setActiveTab(this.activeTab());
-      }
+  constructor() {
+    effect(() => {
+      this.events$.subscribe((events) => {
+        if (events.length > 0) {
+          this.selectedEventId.set(events[0].id);
+        }
+      });
     });
   }
-  setActiveTab(tabId: number): void {
+
+  setActiveTab(tabId: number, eventId: number): void {
     this.activeTab.set(tabId);
-    this.teamData$ = this.eventService
-      .eventDetails()
-      .pipe(
-        map((eventDetails) =>
-          eventDetails.filter((event) => event.id === tabId)
-        )
-      );
+    this.selectedEventId.set(eventId);
   }
 
   navigateToEvent(eventId: number): void {

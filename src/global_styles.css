@@ -1,3 +1,134 @@
+:root {
+  /* Variables */
+  --color-primary-50: #e6f2ff;
+  --color-primary-100: #cce5ff;
+  --color-primary-200: #99cbff;
+  --color-primary-300: #66b0ff;
+  --color-primary-400: #3396ff;
+  --color-primary-500: #0a84ff;
+  --color-primary-600: #0068cc;
+  --color-primary-700: #004c99;
+  --color-primary-800: #003366;
+  --color-primary-900: #001933;
+
+  --color-secondary-50: #efedff;
+  --color-secondary-100: #e0ddff;
+  --color-secondary-200: #c0bbff;
+  --color-secondary-300: #9f99ff;
+  --color-secondary-400: #7f77ff;
+  --color-secondary-500: #5e5ce6;
+  --color-secondary-600: #4b4ab8;
+  --color-secondary-700: #38378a;
+  --color-secondary-800: #24235c;
+  --color-secondary-900: #12112e;
+
+  --color-accent-50: #e6f9ff;
+  --color-accent-100: #ccf4ff;
+  --color-accent-200: #99e9ff;
+  --color-accent-300: #66deff;
+  --color-accent-400: #64d2ff;
+  --color-accent-500: #00badf;
+  --color-accent-600: #0095b2;
+  --color-accent-700: #006f86;
+  --color-accent-800: #004a59;
+  --color-accent-900: #00252d;
+
+  --color-success-50: #e6fae9;
+  --color-success-100: #ccf5d4;
+  --color-success-200: #99eba9;
+  --color-success-300: #66e07d;
+  --color-success-400: #33d652;
+  --color-success-500: #30d158;
+  --color-success-600: #26a746;
+  --color-success-700: #1d7d35;
+  --color-success-800: #135423;
+  --color-success-900: #0a2a12;
+
+  --color-warning-50: #fff5e6;
+  --color-warning-100: #ffebcc;
+  --color-warning-200: #ffd699;
+  --color-warning-300: #ffc266;
+  --color-warning-400: #ffad33;
+  --color-warning-500: #ff9f0a;
+  --color-warning-600: #cc7f08;
+  --color-warning-700: #995f06;
+  --color-warning-800: #664004;
+  --color-warning-900: #332002;
+
+  --color-error-50: #ffe9e7;
+  --color-error-100: #ffd3cf;
+  --color-error-200: #ffa69f;
+  --color-error-300: #ff7a6f;
+  --color-error-400: #ff4d3f;
+  --color-error-500: #ff453a;
+  --color-error-600: #cc372e;
+  --color-error-700: #992923;
+  --color-error-800: #661c17;
+  --color-error-900: #330e0c;
+
+  --color-neutral-50: #f2f2f7;
+  --color-neutral-100: #e5e5ea;
+  --color-neutral-200: #c7c7cc;
+  --color-neutral-300: #aeaeb2;
+  --color-neutral-400: #8e8e93;
+  --color-neutral-500: #636366;
+  --color-neutral-600: #48484a;
+  --color-neutral-700: #3a3a3c;
+  --color-neutral-800: #2c2c2e;
+  --color-neutral-900: #1c1c1e;
+
+  /* Spacing System */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+  --space-9: 128px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  /* Font Sizes */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-body: 1.5;
+  --line-height-heading: 1.2;
+
+  /* Transition */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+}
 /* Global styles */
 * {
   box-sizing: border-box;
@@ -6,13 +137,17 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #333;
   line-height: 1.6;
   background-color: #f5f7fa;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
 }
 
@@ -62,22 +197,11 @@ a:hover {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .event-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .outcomes-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 480px) {
   .header-content {
     flex-direction: column;
     gap: 10px;
-  }
-  
-  .outcomes-container {
-    grid-template-columns: 1fr;
   }
 }
