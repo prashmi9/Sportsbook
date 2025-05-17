@@ -42,7 +42,7 @@ header {
 }
 
 .connection-status.connected {
-  background-color: var(--color-success-300);
+  background-color: var(--color-success-500);
 }
 
 main {

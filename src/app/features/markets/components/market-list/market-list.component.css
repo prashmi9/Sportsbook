@@ -1,8 +1,3 @@
-.market-list {
-  display: flex;
-  flex-direction: column;
-}
-
 /* Navigation tabs */
 .tabs {
   display: flex;
