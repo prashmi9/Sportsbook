@@ -38,7 +38,7 @@ export class EventService {
         tap((eventIds: EventId[]) => {
           const previousEvents = this.inplayEvents.value;
 
-          // Handle new events - subscribe to events that weren't in the previous list
+          // Handle new events - subscribe to events
           const newEvents = eventIds
             .map((id) => id)
             .filter((id) => !previousEvents.includes(id));
@@ -53,7 +53,7 @@ export class EventService {
           }
 
           // Update the inplay events list
-          console.log("newEvents events:", newEvents);
+          // console.log("newEvents :", newEvents);
           this.inplayEvents.next(newEvents);
         })
       )
@@ -84,7 +84,6 @@ export class EventService {
       this.websocketService.unsubscribe(`/topic/event/${eventId}`);
       this.activeEventSubscriptions.delete(eventId);
 
-      // Remove the event from the events map
       const currentEvents = this.eventsMap.value;
       const event = currentEvents.get(eventId);
       // console.log("current  event:", currentEvents);

@@ -1,13 +1,13 @@
 .match-row {
   display: flex;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-neutral-100);
   padding: 15px 20px;
   align-items: center;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
   animation: fadeIn 0.3s ease;
-  background-color: white;
-  border-top: 1px solid #e0e0e0;
+  background-color: var(--color-neutral-50);
+  border-top: 1px solid var(--color-neutral-100);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .match-row:hover {
@@ -22,12 +22,12 @@
 }
 
 .team-name {
-  color: #555;
+  color: var(--color-neutral-600);
   margin-bottom: 5px;
 }
 
 .match-status {
-  color: #4caf50;
+  color: var(--color-success-600);
   font-size: 0.9em;
 }
 
@@ -45,17 +45,17 @@
 
 .odds-box {
   flex: 1;
-  background-color: #f1f1f1;
+  background-color: var(--color-neutral-50);
   margin: 0 5px;
   padding: 15px 10px;
   text-align: center;
   border-radius: 4px;
   font-weight: bold;
-  color: #333;
+  color: var(--color-neutral-700);
 }
 
 .event-card {
-  background-color: white;
+  background-color: var(--color-neutral-50);
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -79,49 +79,49 @@
   font-size: 0.75rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: white;
+  color: var(--color-neutral-50);
 }
 
 .status-badge.live {
-  background-color: #e53e3e;
+  background-color: var(--color-error-400);
   animation: pulse 2s infinite;
 }
 
 .status-badge.upcoming {
-  background-color: #3182ce;
+  background-color: var(--color-accent-500);
 }
 
 .status-badge.finished {
-  background-color: #718096;
+  background-color: var(--color-neutral-500);
 }
 
 .event-name {
   font-size: 1.25rem;
   margin-bottom: 8px;
-  color: #2d3748;
+  color: var(--color-neutral-800);
   margin-right: 60px; /* Space for badge */
 }
 
 .event-time {
   font-size: 0.875rem;
-  color: #4a5568;
+  color: var(--color-neutral-700);
   margin-bottom: 8px;
 }
 
 .event-description {
   font-size: 0.875rem;
-  color: #4a5568;
+  color: var(--color-neutral-700);
   margin-bottom: 16px;
   line-height: 1.4;
 }
 
 .market-count {
   font-size: 0.875rem;
-  color: #718096;
+  color: var(--color-neutral-500);
   font-weight: 500;
 }
 
 .market-count span {
   font-weight: bold;
-  color: #2d3748;
+  color: var(--color-neutral-800);
 }

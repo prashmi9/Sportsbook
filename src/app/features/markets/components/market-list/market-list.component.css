@@ -6,8 +6,8 @@
 /* Navigation tabs */
 .tabs {
   display: flex;
-  background-color: white;
-  border-bottom: 1px solid #e0e0e0;
+  background-color: var(--color-neutral-50);
+  border-bottom: 1px solid var(--color-neutral-100);
 }
 
 .tab {
@@ -17,14 +17,14 @@
 }
 
 .tab.active {
-  color: #4caf50;
-  border-bottom: 3px solid #4caf50;
+  color: var(--color-success-600);
+  border-bottom: 3px solid var(--color-success-600);
 }
 
 .tab-count {
   display: inline-block;
   font-size: 12px;
-  color: #777;
+  color: var(--color-neutral-600);
   margin-left: 5px;
   vertical-align: super;
 }
@@ -37,8 +37,8 @@
 .tab-action {
   padding: 10px 15px;
   margin: 5px;
-  background-color: #3a4a5d;
-  color: white;
+  background-color: var(--color-neutral-700);
+  color: var(--color-neutral-50);
   border: none;
   cursor: pointer;
   border-radius: 3px;
@@ -53,12 +53,12 @@
 .betting-section {
   flex: 1;
   min-width: 300px;
-  border-right: 1px solid #e0e0e0;
+  border-right: 1px solid var(--color-neutral-100);
 }
 
 .section-header {
-  background-color: #1a2c42;
-  color: white;
+  background-color: var(--color-neutral-700);
+  color: var(--color-neutral-50);
   padding: 10px 15px;
   display: flex;
   align-items: center;
@@ -69,8 +69,8 @@
 }
 
 .cash-out {
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--color-success-600);
+  color: var(--color-neutral-50);
   padding: 3px 8px;
   border-radius: 3px;
   font-size: 12px;
@@ -81,8 +81,8 @@
   margin-right: 10px;
   width: 20px;
   height: 20px;
-  background-color: white;
-  color: #1a2c42;
+  background-color: var(--color-neutral-50);
+  color: var(--color-neutral-700);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -94,8 +94,8 @@
 .betting-option {
   display: flex;
   padding: 15px;
-  border-bottom: 1px solid #e0e0e0;
-  background-color: white;
+  border-bottom: 1px solid var(--color-neutral-100);
+  background-color: var(--color-neutral-50);
 }
 
 .option-name {
@@ -104,14 +104,14 @@
 
 .option-odds {
   width: 80px;
-  background-color: #f0f0f0;
+  background-color: var(--color-neutral-50);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
 }
 .market-container {
-  background-color: #f8fafc;
+  background-color: var(--color-neutral-50);
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);

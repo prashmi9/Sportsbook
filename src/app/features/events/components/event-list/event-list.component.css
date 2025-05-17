@@ -1,22 +1,22 @@
 .event-container {
   max-width: 800px;
   margin: 0 auto;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-neutral-100);
   border-radius: 4px;
-  background-color: white;
+  background-color: var(--color-neutral-50);
 }
 .header {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-neutral-100);
 }
 
 .header-item {
   flex: 1;
   text-align: center;
   font-weight: bold;
-  color: #333;
+  color: var(--color-neutral-700);
 }
 
 .event-list-container {
@@ -28,14 +28,14 @@
 h1 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #2d3748;
+  color: var(--color-neutral-800);
   font-weight: 700;
 }
 
 .no-events {
   text-align: center;
   padding: 60px 20px;
-  background-color: white;
+  background-color: var(--color-neutral-50);
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -48,12 +48,12 @@ h1 {
 .no-events h2 {
   font-size: 1.5rem;
   margin-bottom: 12px;
-  color: #2d3748;
+  color: var(--color-neutral-800);
 }
 
 .no-events p {
   font-size: 1rem;
-  color: #718096;
+  color: var(--color-neutral-500);
   max-width: 400px;
   margin: 0 auto;
   line-height: 1.5;
@@ -73,7 +73,7 @@ h1 {
 
 /* Tabs  */
 .tabs-container {
-  background-color: white;
+  background-color: var(--color-neutral-50);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   overflow: hidden;
@@ -83,7 +83,7 @@ h1 {
 .tabs-header {
   display: flex;
   border-bottom: 1px solid var(--color-neutral-200);
-  background-color: #f2f2f7;
+  background-color: var(--color-neutral-100);
 }
 
 .tab-item {
@@ -101,14 +101,14 @@ h1 {
 }
 
 .tab-item:hover {
-  background-color: var(--color-neutral-100);
+  background-color: var(--color-neutral-200);
   color: var(--color-primary-500);
 }
 
 .tab-item.active {
   color: var(--color-primary-500);
   border-bottom: 2px solid var(--color-primary-500);
-  background-color: white;
+  background-color: var(--color-neutral-50);
 }
 .tab-item:hover .tab-icon,
 .tab-item.active .tab-icon {
