@@ -22,7 +22,7 @@ export class EventService {
   private router = inject(Router);
 
   private inplayEvents$ = new BehaviorSubject<EventId[]>([]);
-  private eventsMap$ = new BehaviorSubject<Map<EventId, TeamData>>(new Map());
+  private eventsMap$ = new BehaviorSubject<Map<number, TeamData>>(new Map());
   private marketsMap$ = new BehaviorSubject<Map<number, MarketData>>(new Map());
 
   private activeEventSubscriptions = new Set<EventId>();
@@ -37,6 +37,7 @@ export class EventService {
           const newEvents = eventIds.filter(
             (id) => !previousEvents.includes(id)
           );
+          console.log("new events received:", newEvents);
           const removedEvents = previousEvents.filter(
             (id) => !eventIds.includes(id)
           );
@@ -60,7 +61,8 @@ export class EventService {
         .pipe(
           tap((eventData: TeamData) => {
             const currentEvents = new Map(this.eventsMap$.value);
-            currentEvents.set(eventId, eventData);
+            // console.log("current event data:", currentEvents);
+            currentEvents.set(eventId.id, eventData);
             this.eventsMap$.next(currentEvents);
           })
         )
@@ -72,12 +74,12 @@ export class EventService {
 
   private unsubscribeFromEvent(eventId: EventId): void {
     if (this.activeEventSubscriptions.has(eventId)) {
-      this.websocketService.unsubscribe(`/topic/event/${eventId}`);
+      this.websocketService.unsubscribe(`/topic/event/${eventId.id}`);
       this.activeEventSubscriptions.delete(eventId);
 
       const currentEvents = new Map(this.eventsMap$.value);
-      const event = currentEvents.get(eventId);
-      currentEvents.delete(eventId);
+      const event = currentEvents.get(eventId.id);
+      currentEvents.delete(eventId.id);
       this.eventsMap$.next(currentEvents);
 
       this.router.navigate(["/"]);
@@ -121,7 +123,7 @@ export class EventService {
     return combineLatest([this.inplayEvents$, this.eventsMap$]).pipe(
       map(([eventIds, eventsMap]) =>
         eventIds
-          .map((id) => eventsMap.get(id))
+          .map((event) => eventsMap.get(event.id))
           .filter((event): event is TeamData => !!event)
       )
     );
