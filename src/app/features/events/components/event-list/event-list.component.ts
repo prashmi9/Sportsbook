@@ -1,14 +1,7 @@
 import { Component, effect, inject, signal } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Router } from "@angular/router";
-import {
-  distinctUntilChanged,
-  map,
-  Observable,
-  of,
-  shareReplay,
-  switchMap,
-} from "rxjs";
+import { map, Observable, of, switchMap } from "rxjs";
 import { toObservable } from "@angular/core/rxjs-interop";
 import { EventService } from "../../../../core/services/event.service";
 import { EventNames, TeamData } from "../../../../core/models/event.model";
@@ -39,13 +32,13 @@ export class EventListComponent {
   teamData$: Observable<TeamData[]> = toObservable(this.selectedEventId).pipe(
     switchMap((eventId) => {
       if (eventId === null) return of([]);
-      return this.eventService.eventDetails().pipe(
-        map((events) =>
-          Array.from(events).filter((event) => event.id === eventId)
-        ),
-        distinctUntilChanged((prev, curr) => prev[0]?.id === curr[0]?.id),
-        shareReplay(1)
-      );
+      return this.eventService
+        .eventDetails()
+        .pipe(
+          map((events) =>
+            Array.from(events).filter((event) => event.id === eventId)
+          )
+        );
     })
   );
 
