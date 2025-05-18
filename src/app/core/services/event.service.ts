@@ -151,6 +151,7 @@ export class EventService {
   }
 
   public getAllMarkets(marketId: number, eventId: number): void {
+    console.log("Subscribing to market:", marketId);
     this.subscribeToMarket(marketId, eventId);
   }
 
