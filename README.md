@@ -22,10 +22,12 @@ npm test
 
 ### Screenshots
 
-Are added in screenshots folder
+Added in screenshots folder
 <img src="screenshots/SportsBook-Eventpage.png"/>
-<img src="screenshots/SportsBook-LandingPage.png.png"/>
-<img src="screenshots/Rashmi-SportsBook-unit-test-cases.png.png"/>
+<br/>
+<img src="screenshots/SportsBook-LandingPage.png"/>
+<br/>
+<img src="screenshots/Rashmi-SportsBook-unit-test-cases.png"/>
 
 ### Notes
 
