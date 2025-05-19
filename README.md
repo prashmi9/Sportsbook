@@ -23,10 +23,14 @@ npm test
 ### Screenshots
 
 Added in screenshots folder
-<img src="screenshots/SportsBook-Eventpage.png"/>
-<br/>
+Landing / Events page
 <img src="screenshots/SportsBook-LandingPage.png"/>
+<be/>
+Event Details page
+<img src="screenshots/SportsBook-Eventpage.png"/>
+
 <br/>
+Unit test success report
 <img src="screenshots/Rashmi-SportsBook-unit-test-cases.png"/>
 
 ### Notes
