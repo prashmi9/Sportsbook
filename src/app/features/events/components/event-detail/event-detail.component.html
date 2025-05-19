@@ -12,7 +12,7 @@
       </div>
 
       <div class="markets-section">
-        <app-market-list [markets]="(marketData$ | async) || []">
+        <app-market-list [markets]="(marketData$ | async) || undefined">
         </app-market-list>
       </div>
     </div>
