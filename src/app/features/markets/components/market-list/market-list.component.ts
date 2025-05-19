@@ -1,5 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { MarketData } from "../../../../core/models/market.model";
 
 @Component({
   selector: "app-market-list",
@@ -9,6 +10,5 @@ import { CommonModule } from "@angular/common";
   styleUrls: ["./market-list.component.css"],
 })
 export class MarketListComponent {
-  @Input() markets: any;
-  @Input() eventId: string = "";
+  @Input() markets?: MarketData;
 }
